@@ -16,3 +16,5 @@ demo2 ==> 基本的 CRUD 操作
 ## 博客地址
 
 [MyBatis 基本简介及入门程序](https://blog.csdn.net/qq_44713454/article/details/103020636)
+
+[MyBatis 基本的 CRUD 操作](https://blog.csdn.net/qq_44713454/article/details/108262486)

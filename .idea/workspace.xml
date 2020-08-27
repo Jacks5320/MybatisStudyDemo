@@ -23,20 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32b66309-a8af-4cb1-ae8a-3dfc188715cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo1/mapper/AccountMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo1/mapper/AccountMapper2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo1/mapper/AccountMapper3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo1/mapper/AccountMapper3Impl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo1/pojo/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo2/mapper/AccountMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo2/pojo/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo1/mapper/AccountMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo1/mapper/AccountMapper3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo1/mybatis-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo2/mapper/AccountMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo2/mybatis-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/demo1/Demo1Test.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/demo2/Demo2Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo2/mapper/AccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo2/mapper/AccountMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/demo2/mapper/AccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/demo2/mapper/AccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/demo2/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/demo2/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,61 +85,82 @@
       <recent name="E:\02_Java\01_Study\03_mybatis\01_mybatisStudy\src\main\resources\demo1\com" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Demo1Test.testXmlMapper">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Demo1Test.testAnnotationMapper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Demo2Test.test">
+    <configuration name="Demo2Test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="01_mybatisStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="demo1.*" />
+          <option name="PATTERN" value="demo2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="demo1" />
-      <option name="MAIN_CLASS_NAME" value="demo1.Demo1Test" />
-      <option name="METHOD_NAME" value="testAnnotationMapper" />
+      <option name="PACKAGE_NAME" value="demo2" />
+      <option name="MAIN_CLASS_NAME" value="demo2.Demo2Test" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Demo1Test.testMapperImpl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Demo2Test.testFindById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="01_mybatisStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="demo1.*" />
+          <option name="PATTERN" value="demo2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="demo1" />
-      <option name="MAIN_CLASS_NAME" value="demo1.Demo1Test" />
-      <option name="METHOD_NAME" value="testMapperImpl" />
+      <option name="PACKAGE_NAME" value="demo2" />
+      <option name="MAIN_CLASS_NAME" value="demo2.Demo2Test" />
+      <option name="METHOD_NAME" value="testFindById" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Demo1Test.testXmlMapper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Demo2Test.testFindByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="01_mybatisStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="demo1.*" />
+          <option name="PATTERN" value="demo2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="demo1" />
-      <option name="MAIN_CLASS_NAME" value="demo1.Demo1Test" />
-      <option name="METHOD_NAME" value="testXmlMapper" />
+      <option name="PACKAGE_NAME" value="demo2" />
+      <option name="MAIN_CLASS_NAME" value="demo2.Demo2Test" />
+      <option name="METHOD_NAME" value="testFindByName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo2Test.testSaveAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="01_mybatisStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="demo2" />
+      <option name="MAIN_CLASS_NAME" value="demo2.Demo2Test" />
+      <option name="METHOD_NAME" value="testSaveAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo2Test.testUpdateAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="01_mybatisStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="demo2" />
+      <option name="MAIN_CLASS_NAME" value="demo2.Demo2Test" />
+      <option name="METHOD_NAME" value="testUpdateAccount" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,11 +200,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.Demo2Test.testFindById" />
+      <item itemvalue="JUnit.Demo2Test.testFindByName" />
+      <item itemvalue="JUnit.Demo2Test.testSaveAccount" />
+      <item itemvalue="JUnit.Demo2Test.testUpdateAccount" />
+      <item itemvalue="JUnit.Demo2Test.test" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Demo1Test.testXmlMapper" />
-        <item itemvalue="JUnit.Demo1Test.testMapperImpl" />
-        <item itemvalue="JUnit.Demo1Test.testAnnotationMapper" />
+        <item itemvalue="JUnit.Demo2Test.test" />
+        <item itemvalue="JUnit.Demo2Test.testFindById" />
+        <item itemvalue="JUnit.Demo2Test.testUpdateAccount" />
+        <item itemvalue="JUnit.Demo2Test.testSaveAccount" />
+        <item itemvalue="JUnit.Demo2Test.testFindByName" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +231,9 @@
       <workItem from="1598500055902" duration="117000" />
       <workItem from="1598500187202" duration="491000" />
       <workItem from="1598500692822" duration="441000" />
-      <workItem from="1598501143782" duration="90000" />
+      <workItem from="1598501143782" duration="5218000" />
+      <workItem from="1598507524128" duration="158000" />
+      <workItem from="1598507720755" duration="7402000" />
     </task>
     <servers />
   </component>
@@ -230,10 +253,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2334" y="179" width="1092" height="791" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598500489383">
+    <state x="2334" y="179" width="1092" height="816" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598506091346">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2334" y="179" width="1092" height="791" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598500489383" />
+    <state x="2334" y="179" width="1092" height="816" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598506091346" />
     <state x="2203" y="184" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1598501169023">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -242,22 +265,22 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="3165" y="451" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598498695994" />
-    <state width="1877" height="734" key="GridCell.Tab.0.bottom" timestamp="1598501137672">
+    <state width="1877" height="734" key="GridCell.Tab.0.bottom" timestamp="1598515346241">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="734" key="GridCell.Tab.0.bottom/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598501137672" />
-    <state width="1877" height="734" key="GridCell.Tab.0.center" timestamp="1598501137672">
+    <state width="1877" height="734" key="GridCell.Tab.0.bottom/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598515346241" />
+    <state width="1877" height="734" key="GridCell.Tab.0.center" timestamp="1598515346241">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="734" key="GridCell.Tab.0.center/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598501137672" />
-    <state width="1877" height="734" key="GridCell.Tab.0.left" timestamp="1598501137672">
+    <state width="1877" height="734" key="GridCell.Tab.0.center/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598515346241" />
+    <state width="1877" height="734" key="GridCell.Tab.0.left" timestamp="1598515346241">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="734" key="GridCell.Tab.0.left/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598501137672" />
-    <state width="1877" height="734" key="GridCell.Tab.0.right" timestamp="1598501137672">
+    <state width="1877" height="734" key="GridCell.Tab.0.left/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598515346241" />
+    <state width="1877" height="734" key="GridCell.Tab.0.right" timestamp="1598515346241">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="734" key="GridCell.Tab.0.right/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598501137672" />
+    <state width="1877" height="734" key="GridCell.Tab.0.right/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598515346241" />
     <state x="2356" y="130" key="SettingsEditor" timestamp="1598501232612">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -266,5 +289,9 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2589" y="188" key="new project wizard/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598498041147" />
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1598507236308">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1598507236308" />
   </component>
 </project>

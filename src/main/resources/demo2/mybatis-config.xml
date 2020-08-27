@@ -22,6 +22,6 @@
     </environments>
     <!--注册mapper，指定映射文件或注解类-->
     <mappers>
-        <com.mapper resource="com.mapper/Account.xml"/>
+        <mapper resource="demo2/mapper/AccountMapper.xml"/>
     </mappers>
 </configuration>
