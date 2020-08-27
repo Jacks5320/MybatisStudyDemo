@@ -11,6 +11,7 @@ GitHub，地址：[https://github.com/Jacks5320/MybatisStudyDemo](https://github
 ## 模块
 
 demo1 ==> 入门程序，包括基于 xml 方式、注解方式、持久层实现类方式的查询所有操作。
+demo2 ==> 基本的 CRUD 操作
 
 ## 博客地址
 
