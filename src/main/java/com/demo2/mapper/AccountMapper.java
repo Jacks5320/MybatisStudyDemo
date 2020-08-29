@@ -12,7 +12,7 @@ public interface AccountMapper {
     //  查询所有
     List<Account> findAll();
 
-    //  根据名称查询
+    //  根据 id 查询
     Account findById(Integer id);
 
     //  保存
@@ -31,7 +31,6 @@ public interface AccountMapper {
     int findTotal();
 
     //  根据名称和money查询
-    List<Account> findByNameAndMoney(@Param("name") String name,@Param("money") Double money);
-
+    List<Account> findByNameAndMoney(@Param("name") String name, @Param("money") Double money);
 
 }

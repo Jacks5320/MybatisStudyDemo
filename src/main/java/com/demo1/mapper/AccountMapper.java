@@ -1,7 +1,6 @@
 package com.demo1.mapper;
 
 import com.demo1.pojo.Account;
-
 import java.util.List;
 
 /**
@@ -12,5 +11,5 @@ import java.util.List;
 public interface AccountMapper {
 
     List<Account> findAccountList();
-    
+
 }

@@ -10,7 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -73,7 +72,7 @@ public class Demo2Test {
 
     //  测试更新操作
     @Test
-    public void testUpdateAccount(){
+    public void testUpdateAccount() {
         Account account = mapper.findById(1);
         account.setMoney(5000.0);
         mapper.updateAccount(account);
@@ -83,7 +82,7 @@ public class Demo2Test {
 
     //  测试根据 id 删除
     @Test
-    public void testDelete(){
+    public void testDelete() {
         int id = 6;
         mapper.deleteAccount(id);
         //  提交事务
@@ -92,27 +91,27 @@ public class Demo2Test {
 
     //  测试根据名称模糊查询
     @Test
-    public void testFindByName(){
+    public void testFindByName() {
         //String name = "%李%";
         String name = "李";
         List<Account> accountList = mapper.findByName(name);
-        for(Account account : accountList){
+        for (Account account : accountList) {
             System.out.println(account);
         }
     }
 
     //  测试使用聚合函数查询记录数
     @Test
-    public void testFindTotal(){
+    public void testFindTotal() {
         int count = mapper.findTotal();
         System.out.println(count);
     }
 
     //  测试多参数查询
     @Test
-    public void test(){
+    public void test() {
         List<Account> accountList = mapper.findByNameAndMoney("李", 4000.0);
-        for (Account account : accountList){
+        for (Account account : accountList) {
             System.out.println(account);
         }
     }
