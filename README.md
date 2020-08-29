@@ -13,6 +13,7 @@ GitHub，地址：[https://github.com/Jacks5320/MybatisStudyDemo](https://github
 demo1 ==> 入门程序，包括基于 xml 方式、注解方式、持久层实现类方式的查询所有操作。
 demo2 ==> 基本的 CRUD 操作
 demo3 ==> 结果集封装
+demo4 ==> 核心配置文件常用标签
 
 ## 博客地址
 
@@ -20,4 +21,6 @@ demo3 ==> 结果集封装
 
 [MyBatis 基本的 CRUD 操作](https://blog.csdn.net/qq_44713454/article/details/108262486)
 
-[MyBatis 结果集封装]()
+[MyBatis 结果集映射](https://blog.csdn.net/qq_44713454/article/details/108290405)
+
+[Mybatis 核心配置文件中常用的标签](https://blog.csdn.net/qq_44713454/article/details/108293532)

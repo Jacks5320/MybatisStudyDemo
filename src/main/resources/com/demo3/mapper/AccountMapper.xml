@@ -25,9 +25,9 @@
     </resultMap>
 
     <!-- 普通查询 -->
-    <select id="findAll" resultType="com.demo3.pojo.Account">
-        select * from tb_account
-    </select>
+    <!--<select id="findAll" resultType="com.demo3.pojo.Account">-->
+    <!--    select * from tb_account-->
+    <!--</select>-->
 
     <!-- 起别名 -->
     <!--<select id="findAll" resultType="com.demo3.pojo.Account">-->
@@ -36,9 +36,9 @@
 
     <!-- 使用结果集映射 -->
     <!-- 注意，结果类型就要使用 resultMap 了，值为结果集映射的 id -->
-    <!--<select id="findAll" resultMap="accountMap">-->
-    <!--    select * from tb_account-->
-    <!--</select>-->
+    <select id="findAll" resultMap="accountMap">
+        select * from tb_account
+    </select>
 
     <insert id="updateAccount" parameterType="com.demo3.pojo.Account">
         update tb_account set name=#{accountName},money=#{nowMoney} where id=#{id}

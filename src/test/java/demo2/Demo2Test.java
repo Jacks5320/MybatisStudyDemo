@@ -25,7 +25,7 @@ public class Demo2Test {
     @Before  //  测试方法执行之前执行
     public void init() throws Exception {
         // 1 将配置文件读到字节输入流
-        in = Resources.getResourceAsStream("demo2/mybatis-config.xml");
+        in = Resources.getResourceAsStream("com/demo2/mybatis-config.xml");
         // 2 使用构建者读取字节流，创建工厂
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
         // 3 使用工厂创建 SqlSession 对象

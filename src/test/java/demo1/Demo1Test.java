@@ -21,7 +21,7 @@ public class Demo1Test {
     @Test
     public void testXmlMapper() throws IOException {
         // 1 读取配置文件
-        InputStream inputStream = Resources.getResourceAsStream("demo1/mybatis-config.xml");
+        InputStream inputStream = Resources.getResourceAsStream("com/demo1/mybatis-config.xml");
         // 2 创建 SqlSessionFactory 工厂：使用 SqlSessionFactoryBuilder 构建者
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
         // 3 使用工厂生产 SqlSession 对象
@@ -42,7 +42,7 @@ public class Demo1Test {
     @Test
     public void testAnnotationMapper() throws IOException {
         // 1 读取配置文件
-        InputStream inputStream = Resources.getResourceAsStream("demo1/mybatis-config.xml");
+        InputStream inputStream = Resources.getResourceAsStream("com/demo1/mybatis-config.xml");
         // 2 创建 SqlSessionFactory 工厂：使用 SqlSessionFactoryBuilder 构建者
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
         // 3 使用工厂生产 SqlSession 对象
@@ -63,7 +63,7 @@ public class Demo1Test {
     @Test
     public void testMapperImpl() throws IOException {
         // 1 读取配置文件
-        InputStream inputStream = Resources.getResourceAsStream("demo1/mybatis-config.xml");
+        InputStream inputStream = Resources.getResourceAsStream("com/demo1/mybatis-config.xml");
         // 2 创建工厂
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
         // 3 创建 Mapper 对象

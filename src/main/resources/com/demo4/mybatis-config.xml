@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- MyBatis 核心配置 -->
+<configuration>
+
+    <!-- properties 标签，用于配置 jdbc 连接信息等 -->
+    <!-- 可以直接在内部写 -->
+    <!--<properties>-->
+    <!--    <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="jdbc.url" value="jdbc:mysql://localhost:3306/mybatis_study?serverTimezone=Asia/Shanghai"/>-->
+    <!--    <property name="jdbc.username" value="root"/>-->
+    <!--    <property name="jdbc.password" value="root"/>-->
+    <!--</properties>-->
+
+
+    <!-- 使用 url 属性，指定一个配置文件的 url -->
+    <!-- url 由协议+主机+端口+URI 组成，可以使用 http 协议、也可以使用 file 协议。 -->
+    <!-- http协议，如：http://localhost:8080/mybatisStudy/demo4/jdbcConfig.properties-->
+    <!-- file协议，如：file:///D:/mybatisStudy/src/main/resources/demo4/jdbcConfig.properties -->
+    <!--<properties url="file:///D:/mybatisStudy/src/main/resources/demo4/jdbcConfig.properties"/>-->
+
+    <!-- 使用 resource 属性指定类路径下的配置文件 -->
+    <properties resource="com/demo4/jdbcConfig.properties"/>
+
+    <!-- =========================================================================================== -->
+
+    <!-- typeAliases 标签 -->
+    <!-- 用于配置 pojo 的别名，以便在映射文件中可以不再指定全限定类名 -->
+    <typeAliases>
+        <!-- typeAlias 标签，用于指定单个 pojo 的别名配置 -->
+        <!-- type 属性,指定 pojo 的全限定类名 -->
+        <!-- alias 属性,指定 pojo 的别名，当指定了别名，就不再区分大小写 -->
+        <!--<typeAlias type="com.demo3.pojo.Account" alias="Account"/>-->
+
+        <!-- package 标签，用于指定一个包名，该包下的所有 pojo 都会注册别名，且类名为别名，不区分大小写 -->
+        <!-- name属性,指定 pojo 的包名 -->
+        <package name="com.demo3.pojo"/>
+    </typeAliases>
+
+    <!-- =========================================================================================== -->
+
+    <!--环境配置，可以配置多个 可以根据 id 选择默认环境-->
+    <environments default="mysql">
+        <!-- mysql 环境-->
+        <environment id="mysql">
+            <!--配置事务的类型-->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源(连接池) -->
+            <dataSource type="POOLED">
+                <!-- 使用 el 表达式获取值，需要与配置文件中的 key 保持一致 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--注册mapper，指定映射文件或注解类-->
+    <mappers>
+        <!-- 指定映射文件 -->
+        <!-- resource 属性，指定映射文件的类路径 -->
+        <!-- url属性，指定映射文件的 url -->
+        <!--<mapper resource="demo4/mapper/AccountMapper.xml"/>-->
+
+        <!-- 指定 mapper 接口所在的包 -->
+        <!-- name属性，指定接口的包结构 -->
+        <!-- 注意，要使用 package 标签指定包必须满足以下要求。-->
+        <!-- 1 必须保证 mapper 接口的包结构 与 mapper 映射文件的目录结构一致: com.demo4.mapper -->
+        <!-- 2 必须保证接口名与映射文件名保持一致: AccountMapper.java <==> AccountMapper.xml -->
+        <!-- 如果不满足以上条件:org.apache.ibatis.binding.BindingException: Invalid bound statement (not found) -->
+        <package name="com.demo4.mapper"/>
+    </mappers>
+</configuration>
