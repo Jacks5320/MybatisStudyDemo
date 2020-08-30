@@ -1,7 +1,7 @@
 package demo2;
 
-import com.demo2.mapper.AccountMapper;
-import com.demo2.pojo.Account;
+import com.mapper.demo2.AccountMapper;
+import com.pojo.Account;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,7 +25,7 @@ public class Demo2Test {
     @Before  //  测试方法执行之前执行
     public void init() throws Exception {
         // 1 将配置文件读到字节输入流
-        in = Resources.getResourceAsStream("com/demo2/mybatis-config.xml");
+        in = Resources.getResourceAsStream("com/mapper/demo2/mybatis-config.xml");
         // 2 使用构建者读取字节流，创建工厂
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
         // 3 使用工厂创建 SqlSession 对象
@@ -40,7 +40,7 @@ public class Demo2Test {
         in.close();
     }
 
-    //  测试查询所有
+    //  1 测试查询所有
     @Test
     public void testFindAll() {
         List<Account> accountList = mapper.findAll();
@@ -49,69 +49,67 @@ public class Demo2Test {
         }
     }
 
-    //  测试根据 id 查询
+    // 2 根据 id 查询
     @Test
-    public void testFindById() {
-        int id = 1;
-        Account account = mapper.findById(id);
+    public void testFindById(){
+        Account account = mapper.findById(1);
         System.out.println(account);
     }
 
-    //  测试保存
+    // 3 新增一条记录
     @Test
-    public void testSaveAccount() {
+    public void testSave(){
         Account account = new Account();
-        account.setName("小刘");
-        account.setMoney(3000.0);
-        System.out.println("保存操作之前：" + account);
+        account.setAccountName("李华");
+        System.out.println("提交前：" + account);
         mapper.saveAccount(account);
-        System.out.println("保存操作之后：" + account);
-        //  提交事务
+        //  提交事务！
         sqlSession.commit();
+        //  获取到 key
+        System.out.println("提交后：" + account);
     }
 
-    //  测试更新操作
+    // 4 修改一条数据，修改新增数据的 money
     @Test
-    public void testUpdateAccount() {
-        Account account = mapper.findById(1);
-        account.setMoney(5000.0);
+    public void testUpdate(){
+        Account account = new Account();
+        account.setId(4);
+        account.setNowMoney(10000.0);
         mapper.updateAccount(account);
-        //  提交事务
+        // 提交事务！
         sqlSession.commit();
     }
 
-    //  测试根据 id 删除
+    // 5 删除一条数据
     @Test
-    public void testDelete() {
-        int id = 6;
-        mapper.deleteAccount(id);
-        //  提交事务
+    public void testDelete(){
+        mapper.deleteById(4);
+        // 提交事务
         sqlSession.commit();
     }
 
-    //  测试根据名称模糊查询
+    // 6 模糊查询：可以再控制台看日志中发送的 sql 语句，区分 ${} 与 #{} 的区别
     @Test
-    public void testFindByName() {
-        //String name = "%李%";
-        String name = "李";
-        List<Account> accountList = mapper.findByName(name);
-        for (Account account : accountList) {
+    public void testFindByName(){
+        //模糊查询1：使用 ${}
+        List<Account> accountList1 = mapper.findByName("小");
+        for (Account account : accountList1){
             System.out.println(account);
         }
-    }
 
-    //  测试使用聚合函数查询记录数
-    @Test
-    public void testFindTotal() {
-        int count = mapper.findTotal();
-        System.out.println(count);
-    }
+        System.out.println(" ------- 分割线 -------- ");
 
-    //  测试多参数查询
-    @Test
-    public void test() {
-        List<Account> accountList = mapper.findByNameAndMoney("李", 4000.0);
-        for (Account account : accountList) {
+        //模糊查询2：使用 #{}，在外面拼接好再传入，更灵活
+        List<Account> accountList2 = mapper.findByName2("%小%");
+        for (Account account : accountList2){
+            System.out.println(account);
+        }
+
+        System.out.println(" ------- 分割线 -------- ");
+
+        //模糊查询3：使用 #{} + bind 标签，可以避免 sql 注入
+        List<Account> accountList3 = mapper.findByName3("小");
+        for (Account account : accountList3){
             System.out.println(account);
         }
     }

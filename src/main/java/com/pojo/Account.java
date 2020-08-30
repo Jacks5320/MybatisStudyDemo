@@ -1,18 +1,21 @@
-package com.demo3.pojo;
+package com.pojo;
 
 import java.io.Serializable;
 
+/**
+ * 实体类
+ */
 public class Account implements Serializable {
     private Integer id;
     private String accountName;
-    private double nowMoney;
+    private Double nowMoney;
 
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
                 ", accountName='" + accountName + '\'' +
-                ", nowMoney='" + nowMoney + '\'' +
+                ", nowMoney=" + nowMoney +
                 '}';
     }
 
@@ -32,11 +35,11 @@ public class Account implements Serializable {
         this.accountName = accountName;
     }
 
-    public double getNowMoney() {
+    public Double getNowMoney() {
         return nowMoney;
     }
 
-    public void setNowMoney(double nowMoney) {
+    public void setNowMoney(Double nowMoney) {
         this.nowMoney = nowMoney;
     }
 }

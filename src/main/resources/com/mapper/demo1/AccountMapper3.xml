@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace 命名空间，绑定一个对应的 Mapper 接口，且为全限定类名 -->
-<mapper namespace="com.demo1.mapper.AccountMapper3">
+<mapper namespace="com.mapper.demo1.AccountMapper3">
 
-    <select id="findAccountList" resultType="com.demo1.pojo.Account">
-        select * from tb_account
+    <select id="findAll" resultType="com.pojo.Account">
+        select id,name as accountName,money as nowMoney from tb_account
     </select>
 
 </mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    mapper 标签是 映射文件的根标签，只有一个属性 namespace，用于指定对应 mapper 接口的全类名
+-->
+<mapper namespace="com.mapper.demo2.AccountMapper">
+
+    <!-- 自定义结果集映射，将 pojo 类与 数据库中的字段名不同的地方作映射 -->
+    <!-- 在核心配置文件中配置别名，所以可以直接使用 account ，不区分大小写-->
+    <!-- 但是更建议使用全类名，可以 ctrl + 左键进入接口查看方法，这里作为演示，就用 account 了 -->
+    <resultMap id="accountMap" type="account">
+        <!-- id指主键、result指普通属性 -->
+        <!-- column 指数据库字段名、property 指 pojo 属性名 -->
+        <id column="id" property="id"/>
+        <result column="name" property="accountName"/>
+        <result column="money" property="nowMoney"/>
+    </resultMap>
+
+    <!-- ===============查询所有===================== -->
+    <!-- 可以通过起别名，也可以通过自定义结果集映射来解决查询值为 null 的情况 -->
+    <!-- 需要注意，起的别名也必须与 Java 类的属性名一致，不然查到的也是 null -->
+    <select id="findAll" resultType="com.pojo.Account">
+        select id,name as accountName,money as nowMoney from tb_account
+    </select>
+
+    <!-- ===============根据 id 查询===================== -->
+    <!-- resultMap 指定自定义的结果集映射，值为自定义结果集的 id -->
+    <!-- #{} 用于获取传入的参数 -->
+    <!-- 如果传参只有一个 普通类型 或 String 参数，则命名可以随意 -->
+    <!-- 如果是一个 pojo 对象，可以用 OGNL 表示式获取 pojo 的属性，详情见保存方法 -->
+    <!-- #{} 是 PreparedStatement 中的占位符，可以将传入的单个参数放入占位符中 -->
+    <select id="findById" resultMap="accountMap">
+        select * from tb_account where id = #{accountId}
+    </select>
+
+    <!-- ===============保存方法===================== -->
+    <!-- 没有返回值 -->
+    <!-- 可以使用 selectKey 获取当前插入记录的 id 值 -->
+    <insert id="saveAccount" parameterType="com.pojo.Account">
+        <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+        insert into tb_account(name,money) values (#{accountName},#{nowMoney})
+    </insert>
+
+    <!-- =============== 更新方法 ===================== -->
+    <update id="updateAccount" parameterType="com.pojo.Account">
+        update tb_account set money=#{nowMoney} where id = #{id}
+    </update>
+
+    <!-- =============== 删除方法 ===================== -->
+    <delete id="deleteById">
+        delete from tb_account where id = #{accountId}
+    </delete>
+
+    <!-- =============== 模糊查询1 ===================== -->
+    <!-- ${} 是 Statement 的字符串拼接，有 sql 注入问题，但是能替代 #{} 不能使用的位置 -->
+    <select id="findByName" resultMap="accountMap">
+        select * from tb_account where name like '%${accountName}%'
+    </select>
+
+    <!-- =============== 模糊查询2 ===================== -->
+    <select id="findByName2" resultMap="accountMap">
+        select * from tb_account where name like #{accountName}
+    </select>
+
+    <!-- =============== 模糊查询3 ===================== -->
+    <select id="findByName3" resultMap="accountMap">
+        <bind name="accountName" value="'%' + accountName + '%'"/>
+        select * from tb_account where name like #{accountName}
+    </select>
+
+</mapper>

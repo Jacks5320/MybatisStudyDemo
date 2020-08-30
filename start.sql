@@ -1,4 +1,4 @@
-CREATE DATABASE `mybatis_study`;
+CREATE DATABASE IF NOT EXISTS `mybatis_study`;
 
 USE `mybatis_study`;
 

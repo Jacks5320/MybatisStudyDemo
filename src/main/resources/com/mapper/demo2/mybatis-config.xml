@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 跟标签，mybatis在 Configuration 类中定义了一些别名 -->
+<configuration>
+
+    <!-- ======================== 读取外部配置文件 ========================= -->
+    <!-- 用于读取外部的 properties 配置文件 -->
+    <properties resource="jdbc-Config.properties"/>
+
+    <!-- ======================== 重要配置项 ========================= -->
+    <!-- 配置一些重要的配置项，如缓存、下划线命名规则转驼峰命名等 -->
+    <settings>
+        <!-- 下划线命名转驼峰命名 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- ======================== 起别名 ========================= -->
+    <!-- 给 pojo 类取别名，在 映射文件中引用 pojo 类型的时候就可以直接使用别名，不区分大小写 -->
+    <typeAliases>
+        <!-- 配置单个 pojo -->
+        <typeAlias type="com.pojo.Account" alias="Account"/>
+        <!-- 批量起别名，可能会有同名 pojo，可以在实体类上使用 @Alias 取其他别名 -->
+        <package name="com.pojo"/>
+    </typeAliases>
+
+    <!-- ======================== 数据源环境配置 ========================= -->
+    <!-- 可以配置多个数据源，default 可以指定使用哪个数据源，值为具体环境配置的 id -->
+    <!-- 通过 default 属性可以自由切换数据源 -->
+    <environments default="mysql">
+        <!-- 具体数据源配置，id 是该环境的唯一标识 -->
+        <environment id="mysql">
+            <!-- 事务管理类型 -->
+            <transactionManager type="JDBC"/>
+            <!-- jdbc连接信息，type 可取值：POOLED(采用池)、UNPOOLED(不采用池，每次访问新建连接)、JNDI(服务器容器，只能web项目用) -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- ======================== 数据库厂商标识 ========================= -->
+    <!-- type=DB_VENDOR ==>  VendorDatabaseIdProvider -->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="SQL Server" value="sqlserver"/>
+        <property name="DB2" value="db2"/>
+        <property name="Oracle" value="oracle" />
+    </databaseIdProvider>
+
+    <!-- ======================== 映射器 ========================= -->
+    <!-- 注册 mapper，告诉 MyBatis 去哪里寻找 SQL 映射-->
+    <mappers>
+        <!-- 单个注册 -->
+        <!-- resource 类路径下的文件 -->
+        <!-- url，指定映射文件的 url，可以使用 file 协议指定本地 -->
+        <mapper resource="com/mapper/demo2/AccountMapper.xml"/>
+
+        <!-- 批量注册 -->
+        <!-- name，指定包名，要使用批量注入必须保证 Mapper 接口和 Mapper映射文件的目录结构和命名完全一致 -->
+        <!-- 例如：com.mapper.demo2.AccountMapper.java <==> com.mapper.demo2.Account.xml -->
+        <!-- 这样作可以让 Java 编译后在同一个文件目录下 -->
+        <!--<package name="com.mapper.demo2"/>-->
+    </mappers>
+</configuration>
