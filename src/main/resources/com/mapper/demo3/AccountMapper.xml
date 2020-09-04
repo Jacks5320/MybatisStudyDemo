@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.demo3.AccountMapper">
+
+    <resultMap id="accountMap" type="com.pojo.Account">
+        <id column="id" property="id"/>
+        <result column="name" property="accountName"/>
+        <result column="money" property="nowMoney"/>
+    </resultMap>
+    <!-- if 标签，每多满足一个 if 判断，就多一个查询条件 -->
+    <select id="findByCondition" resultMap="accountMap">
+        select * from tb_account
+        <!-- where 标签可以清除 条件 "前面" 多余的 and 符号 -->
+        <where>
+            <!-- 判断的属性是 pojo 的属性 -->
+            <if test="id != null">id=#{id}</if>
+            <if test="accountName != null">and name=#{accountName}</if>
+            <!-- 特殊符号需要用实体表示，如 &lt; <===> < 、&gt; <===> > -->
+            <if test="nowMoney != null and nowMoney != 0">and money=#{nowMoney}</if>
+        </where>
+    </select>
+
+    <!-- choose 标签 -->
+    <select id="findByChoose" resultMap="accountMap">
+        select * from tb_account
+        <where>
+            <choose>
+                <!-- 满足一个就跳出 -->
+                <when test="id != null">id=#{id}</when>
+                <!-- 使用实体 &quot; 表示双引号，""判断空值 -->
+                <when test="accountName != null and accountName != &quot;&quot;">name like #{accountName}</when>
+                <when test="nowMoney != null and nowMoney != 0">money=#{nowMoney}</when>
+                <!-- 当条件都不满足时才执行 -->
+                <otherwise>id=1</otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!-- trim标签 -->
+    <!-- trim 标签体中的内容会拼接在一起 -->
+    <!-- prefix 前缀，给拼接的字符串加前缀 -->
+    <!-- prefixOverrides 前缀覆盖，去掉整个字符串前面指定的字符串 -->
+    <!-- suffix 后缀，给拼接的字符串加后缀 -->
+    <!-- suffixOverrides 后缀覆盖，去掉整个字符串后面指定的字符串 -->
+    <select id="findByTrim" resultMap="accountMap">
+        select * from tb_account
+        <trim prefix="where" prefixOverrides="" suffix="" suffixOverrides="AND">
+            <if test="id != null">
+                id = #{id} AND
+            </if>
+            <if test="accountName != null">
+                name=#{accountName} AND
+            </if>
+            <if test="nowMoney != null">
+                money > #{nowMoney} AND
+            </if>
+        </trim>
+    </select>
+
+    <!-- 批量保存 -->
+    <!-- 下面拼接结果：
+            insert into tb_account(name,money)
+            values
+            (#{accountName),#{nowMoney}),
+            (#{accountName2},#{nowMoney2}) -->
+    <insert id="saveList" parameterType="com.pojo.Account">
+        insert into tb_account(name,money) values
+        <!-- collection 传入集合类型 -->
+        <!-- open 拼接起始符号 -->
+        <!-- close 拼接结束符号 -->
+        <!-- item 每次遍历获取的对象 -->
+        <!-- separator 每次循环结果的分割符号 -->
+        <!-- index 当前对象的索引值 -->
+        <foreach collection="list" item="account" separator="," index="index" open="" close="">
+            (#{account.accountName},#{account.nowMoney})
+        </foreach>
+    </insert>
+
+    <!-- 批量更新 -->
+    <!-- 在开始之前，需要设置 jdbc的url，allowMultiQueries=true，否则不能批量发送多条语句 -->
+    <!-- 拼接结果
+    update tb_account set name=?,money=? where id=? ;
+    update tb_account set name=?,money=? where id=? ;
+    update tb_account set name=?,money=? where id=? ;
+    -->
+    <update id="updateList" parameterType="com.pojo.Account">
+        <foreach collection="list" item="item" separator=";">
+            update tb_account set name=#{item.accountName},money=#{item.nowMoney} where id=#{item.id}
+        </foreach>
+    </update>
+
+    <!-- 模糊查询，使用 bind 标签拼接 % -->
+    <select id="findByName" resultMap="accountMap">
+        <!-- name，指定拼接的属性，是 pojo 属性名 -->
+        <!-- value，表达式，会将拼接结果赋值给 name 指定的属性名 -->
+        <bind name="accountName" value="'%' + accountName + '%'"/>
+        select * from tb_account where name like #{accountName}
+    </select>
+
+    <!-- 提取公用 sql -->
+    <sql id="selectAccount">
+        select a.id,a.name,a.money from tb_account as a
+    </sql>
+    <!-- 引用 sql -->
+    <select id="findById" resultMap="accountMap">
+        <!-- 引用 抽取的sql，refid 用于指定公用 sql 的id -->
+        <include refid="selectAccount"/>
+        where id=#{id}
+    </select>
+</mapper>

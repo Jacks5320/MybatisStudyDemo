@@ -10,6 +10,16 @@ public class Account implements Serializable {
     private String accountName;
     private Double nowMoney;
 
+    public Account() {
+    }
+
+    //  加入构造，方便测试时 new 对象
+    public Account(Integer id, String accountName, Double nowMoney) {
+        this.id = id;
+        this.accountName = accountName;
+        this.nowMoney = nowMoney;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
