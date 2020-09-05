@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.demo4.AccountMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache/>
+
+    <!-- 二级缓存标签属性 -->
+
+    <!-- size，引用数目，可以被设置为任意正整数，要注意欲缓存对象的大小和运行环境中可用的内存资源。默认值是 1024。 -->
+    <!-- readOnly，设置读写，设置为 true 表示只读，设置为 false 表示可以读写。
+                   只读的缓存会给所有调用者返回缓存对象的相同实例，因此这些对象不能被修改。这就提供了可观的性能提升。
+                   而可读写的缓存会（通过序列化）返回缓存对象的拷贝。速度上会慢一些，但是更安全，因此默认值是 false。 -->
+    <!-- flushInterval，刷新间隔，可以设置为一个合理的整数，单位为好表，默认是不设置，意味着只有在调用语句时刷新 -->
+    <!-- eviction，清除政策，可选值：
+                LRU，最近最少使用，移除最长时间不被使用的对象。(默认策略)
+                FIFO，先进先出，按对象进入缓存的顺序来移除它们。
+                SOFT，软引用，基于垃圾回收器状态和软引用规则移除对象。
+                WEAK，弱引用，更积极地基于垃圾收集器状态和弱引用规则移除对象。
+    -->
+    <!-- blocking，当在缓存中找不到元素时，它设置对缓存键的锁定;这样其他线程将等待此元素被填充，而不是命中数据库。 -->
+    <!-- type，指定自定义缓存类，该类必须实现 org.apache.ibatis.cache.Cache 接口，且提供一个接受 String 参数作为 id 的构造器。 -->
+    <!--<cache size="" readOnly="" flushInterval="" eviction="" blocking="" type=""/>-->
+    <!--引入其他 namespace 的缓存配置-->
+    <!--<cache-ref namespace=""/>-->
+    <resultMap id="accountMap" type="com.pojo.Account">
+        <id column="id" property="id"/>
+        <result column="name" property="accountName"/>
+        <result column="money" property="nowMoney"/>
+    </resultMap>
+
+    <select id="findById" resultMap="accountMap">
+        select * from tb_account where id=#{id}
+    </select>
+
+    <update id="updateAccount" parameterType="com.pojo.Account">
+        update tb_account set name=#{accountName},money=#{nowMoney} where id=#{id}
+    </update>
+</mapper>
