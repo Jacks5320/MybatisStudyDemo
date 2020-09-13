@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.io.InputStream;
 
 /**
- * 测试二级缓存
+ * 测试二级缓存，测试时需要在映射文件中加入 <cache/> 标签
  */
 public class Demo4TTest2 {
     @Test

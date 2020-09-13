@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.io.InputStream;
 
 /**
- * 测试一级缓存
+ * 测试一级缓存，测试的时候需要注释掉 映射文件中的 <cache/> 标签
  */
 
 public class Demo4Test {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 演示联表查询：查询出每个学生对应的老师， -->
+<mapper namespace="com.mapper.demo5.StudentMapper">
+
+    <!-- 方式一：分步查询，类似于 SQL 的子查询 -->
+    <resultMap id="stuMap1" type="com.pojo.Student">
+        <result column="s_name" property="name"/>
+        <!-- 嵌套查询语句 -->
+        <association column="t_id"
+                     property="teacher"
+                     javaType="com.pojo.Teacher"
+                     select="com.mapper.demo5.TeacherMapper.findById"/>
+    </resultMap>
+
+    <select id="findStudentList" resultMap="stuMap1">
+        SELECT * from tb_student
+    </select>
+
+    <!-- 方式二：关联单个 pojo，类似于 SQL 的联表查询 -->
+    <resultMap id="stuMap2" type="com.pojo.Student">
+        <!-- 这里需要加上学生 id 的映射，否则会混淆 -->
+        <id column="id" property="id"/>
+        <result column="s_name" property="name"/>
+        <!-- 一对一的关系映射，配置 teacher 的映射 -->
+        <!-- property 指向对象引用，column 指向外键 -->
+        <association property="teacher" column="t_id" javaType="com.pojo.Teacher">
+            <!-- 这里的 column 使用 student 的外键字段作为 teacher 的 id，否则重名，teacher 的id会取 student 的id -->
+            <id column="t_id" property="id"/>
+            <result column="s_name" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--<select id="findStudentList" resultMap="stuMap2">-->
+    <!--    SELECT * from tb_student-->
+    <!--</select>-->
+</mapper>
