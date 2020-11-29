@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StudentMapper {
     List<Student> findStudentList();
+
+    List<Student> findStudentList2();
 }

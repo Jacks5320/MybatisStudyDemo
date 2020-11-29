@@ -6,6 +6,6 @@
 <mapper namespace="com.mapper.demo5.TeacherMapper">
 
     <select id="findById" resultType="com.pojo.Teacher">
-        select id,t_name name from tb_teacher where id=#{id}
+        select id,t_name name from t_teacher where id=#{id}
     </select>
 </mapper>

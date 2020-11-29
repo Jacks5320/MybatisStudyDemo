@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 演示联表查询：查询出每个学生对应的老师， -->
+<mapper namespace="com.mapper.demo6.CommodityOrderMapper">
+    <resultMap id="comMap" type="com.pojo.CommodityOrder">
+        <id column="o_id" property="id"/>
+        <result column="order_name" property="name"/>
+        <!--ofType 属性用于指定集合中元素的类型-->
+        <collection property="commodityList" ofType="com.pojo.CommodityOrder">
+            <result column="c_id" property="id"/>
+            <result column="commodity_name" property="name"/>
+        </collection>
+    </resultMap>
+
+    <!-- 使用外连接查询 -->
+    <select id="findAll" resultMap="comMap">
+        SELECT o.id o_id,c.id c_id,o.`name` order_name,c.`name` commodity_name
+        FROM t_commodity c,t_commodity_order o,t_commodity_ref_order r
+        WHERE r.c_id = c.id AND  r.o_id = o.id
+    </select>
+</mapper>
