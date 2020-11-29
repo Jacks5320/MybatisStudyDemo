@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 演示联表查询：查询出每个学生对应的老师， -->
+<mapper namespace="com.mapper.demo7.AccountMapper">
+    <resultMap id="pageMap" type="com.pojo.Account">
+        <id column="id" property="id"/>
+        <result column="name" property="accountName"/>
+        <result column="money" property="nowMoney"/>
+    </resultMap>
+
+    <select id="getTotalSize" resultType="long">
+        select count(id) from tb_account;
+    </select>
+
+    <select id="findPage" resultMap="pageMap">
+        select  a.* from tb_account a limit #{offset},#{limit}
+    </select>
+
+    <select id="findPage2" resultMap="pageMap">
+        select  a.* from tb_account a
+        <where>
+            <if test="accountName != null">name = #{accountName}</if>
+        </where>
+    </select>
+</mapper>

@@ -61,7 +61,7 @@
 
         <!-- 批量注册 -->
         <!-- name，指定包名，要使用批量注入必须保证 Mapper 接口和 Mapper映射文件的目录结构和命名完全一致 -->
-        <!-- 例如：com.mapper.demo2.AccountMapper.java <==> com.mapper.demo2.Account.xml -->
+        <!-- 例如：com.mapper.demo2.AccountMapper.java <==> com.mapper.demo2.AccountMapper.xml -->
         <!-- 这样作可以让 Java 编译后在同一个文件目录下 -->
         <!--<package name="com.mapper.demo2"/>-->
     </mappers>
